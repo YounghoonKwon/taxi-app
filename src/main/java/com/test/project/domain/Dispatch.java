@@ -36,4 +36,12 @@ public class Dispatch extends BaseEntity {
         this.status = toChange.getStatus();
         this.acceptedAt = toChange.getAcceptedAt();
     }
+
+    public boolean isStandByStatus() {
+        return this.status == Status.STAND_BY;
+    }
+
+    public boolean isAcceptedStatus(){
+        return this.status == Status.ACCEPTED;
+    }
 }

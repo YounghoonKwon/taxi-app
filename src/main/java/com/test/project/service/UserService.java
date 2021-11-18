@@ -6,7 +6,8 @@ import com.test.project.dto.UserSigninRequest;
 import com.test.project.dto.UserSigninResponse;
 import com.test.project.dto.UserSignupRequest;
 import com.test.project.dto.UserSignupResponse;
-import com.test.project.exception.DuplicateException;
+import com.test.project.exception.BadRequestException;
+import com.test.project.exception.ConflictException;
 import com.test.project.exception.UnAuthorizedException;
 import com.test.project.repository.UserRepository;
 import lombok.AccessLevel;
@@ -30,7 +31,7 @@ public class UserService {
     private void validateUser(UserSigninRequest userSigninRequest) {
         final boolean existance = userRepository.existsByEmailAndPassword(userSigninRequest.getEmail(), userSigninRequest.getPassword());
         if (!existance) {
-            throw new UnAuthorizedException("유저 정보를 찾을 수 없습니다.");
+            throw new BadRequestException("로그인하기 위한 인증 정보가 올바르지 않습니다.");
         }
     }
 
@@ -43,7 +44,7 @@ public class UserService {
     private void validateDuplicate(UserSignupRequest userSignupRequest) {
         final boolean existance = userRepository.existsByEmail(userSignupRequest.getEmail());
         if (existance) {
-            throw new DuplicateException("이미 존재하는 유저가 있습니다");
+            throw new ConflictException("이미 존재하는 유저가 있습니다");
         }
     }
 
@@ -54,7 +55,7 @@ public class UserService {
 
     public void validateAccessToken(String accessToken) {
         if (!jwtTokenProvider.validateToken(accessToken)) {
-            throw new UnAuthorizedException("유효하지 않은 토큰입니다.");
+            throw new UnAuthorizedException("인증정보가 유효하지 않습니다");
         }
     }
 }
