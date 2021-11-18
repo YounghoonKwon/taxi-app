@@ -1,4 +1,4 @@
 package com.test.project.repository;
 
-public class TaxiRepository {
+public class DispatchRepository {
 }
