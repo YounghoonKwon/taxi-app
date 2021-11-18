@@ -21,8 +21,8 @@ public class User extends BaseEntity {
     private UserType userType;
 
     @Builder
-    public User(Long id, LocalDateTime createdAt, String email, String password, UserType userType) {
-        super(id, createdAt);
+    public User(Integer id, LocalDateTime createdAt, LocalDateTime updatedAt, String email, String password, UserType userType) {
+        super(id, createdAt, updatedAt);
         this.email = email;
         this.password = password;
         this.userType = userType;
