@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -18,13 +20,13 @@ public class UserController {
 
     @PostMapping("/sign-in")
     @ResponseStatus(HttpStatus.OK)
-    public UserSigninResponse signin(@RequestBody UserSigninRequest userSigninRequest) {
+    public UserSigninResponse signin(@RequestBody @Valid UserSigninRequest userSigninRequest) {
         return userService.signin(userSigninRequest);
     }
 
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserSignupResponse signup(@RequestBody UserSignupRequest userSignupRequest) {
+    public UserSignupResponse signup(@RequestBody @Valid UserSignupRequest userSignupRequest) {
         return userService.signup(userSignupRequest);
     }
 }

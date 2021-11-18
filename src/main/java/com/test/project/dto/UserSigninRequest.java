@@ -14,7 +14,7 @@ public class UserSigninRequest {
     @Email
     private String email;
 
-    @Size(min = 2, message = "{validation.name.size.too_short}")
-    @Size(max = 15, message = "{validation.name.size.too_long}")
+    @Size(min = 1, message = "1글자 이상")
+    @Size(max = 15, message = "15글자 이하")
     private String password;
 }

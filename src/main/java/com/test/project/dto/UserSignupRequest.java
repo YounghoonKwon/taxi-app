@@ -6,11 +6,19 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserSignupRequest {
 
+    @Email
     private String email;
+
+    @Size(min = 1, message = "1글자 이상")
+    @Size(max = 15, message = "15글자 이하")
     private String password;
     private UserType userType;
 

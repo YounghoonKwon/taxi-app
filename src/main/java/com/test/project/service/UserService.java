@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,7 +25,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public UserSigninResponse signin(UserSigninRequest userSigninRequest) {
+    public UserSigninResponse signin(@Valid UserSigninRequest userSigninRequest) {
         validateUser(userSigninRequest);
         return UserSigninResponse.from(jwtTokenProvider.createToken(userSigninRequest.getEmail()));
     }
@@ -35,7 +37,8 @@ public class UserService {
         }
     }
 
-    public UserSignupResponse signup(UserSignupRequest userSignupRequest) {
+    @Transactional
+    public UserSignupResponse signup(@Valid UserSignupRequest userSignupRequest) {
         validateDuplicate(userSignupRequest);
         final User user = userRepository.save(userSignupRequest.toEntity());
         return UserSignupResponse.of(user);

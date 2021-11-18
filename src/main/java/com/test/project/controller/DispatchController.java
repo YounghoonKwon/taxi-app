@@ -7,8 +7,10 @@ import com.test.project.dto.DispatchResponse;
 import com.test.project.service.DispatchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +28,7 @@ public class DispatchController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DispatchResponse create(@SigninUser User user, DispatchRequest dispatchRequest) {
+    public DispatchResponse create(@SigninUser User user, @Valid DispatchRequest dispatchRequest) {
         return dispatchService.create(user, dispatchRequest);
     }
 

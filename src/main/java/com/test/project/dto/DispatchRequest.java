@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DispatchRequest {
 
-    @Size(min = 1, message = "{validation.name.size.too_short}")
-    @Size(max = 200, message = "{validation.name.size.too_long}")
+    @Size(min = 1, message = "1글자 이상")
+    @Size(max = 100, message = "100글자 이하")
     private String address;
 
     public DispatchRequest(String address) {
