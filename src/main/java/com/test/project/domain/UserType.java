@@ -1,7 +1,10 @@
 package com.test.project.domain;
 
-public enum UserType {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    passenger,
-    driver
+public enum UserType {
+    @JsonProperty("passenger")
+    PASSENGER,
+    @JsonProperty("driver")
+    DRIVER
 }
