@@ -48,6 +48,7 @@ class DispatchServiceTest {
             .password("test")
             .userType(UserType.DRIVER)
             .build();
+        userRepository.saveAll(Arrays.asList(driver, passenger));
 
         dispatchRequest = new DispatchRequest("루터회관");
     }
