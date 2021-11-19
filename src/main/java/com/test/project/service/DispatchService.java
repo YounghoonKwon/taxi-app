@@ -48,7 +48,6 @@ public class DispatchService {
         return DispatchResponse.from(dispatch);
     }
 
-
     public List<DispatchResponse> findAllDispatches(Integer userId) {
         final Optional<User> optionalUser = userRepository.findById(userId);
         final User user = optionalUser.orElseThrow(() -> new UnAuthorizedException("배차요청 하려는 유저가 저장소에 존재하지 않습니다"));
@@ -74,7 +73,7 @@ public class DispatchService {
         optionalDispatch.orElseThrow(() -> new NotFoundException("요청한 택시 배차 요청이 존재하지 않습니다"));
         final Dispatch dispatch = optionalDispatch.get();
 
-        if(dispatch.isAcceptedStatus()){
+        if (dispatch.isAcceptedStatus()) {
             throw new ConflictException("이미 다른 기사에 의해 배차 요청이 수락되었습니다");
         }
 
@@ -90,4 +89,3 @@ public class DispatchService {
         return DispatchResponse.from(dispatch);
     }
 }
-
