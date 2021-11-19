@@ -2,9 +2,7 @@ package com.test.project.domain;
 
 import lombok.*;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,6 +15,8 @@ public class Dispatch extends BaseEntity {
     private String address;
     private Integer driverId;
     private Integer passengerId;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
     private LocalDateTime acceptedAt;
 

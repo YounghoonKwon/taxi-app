@@ -53,7 +53,7 @@ public class UserService {
 
     public User findByAccessToken(String accessToken) {
         String email = String.valueOf(jwtTokenProvider.getPayload(accessToken));
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).orElseThrow(() -> new UnAuthorizedException("인증정보가 유효하지 않습니다"));
     }
 
     public void validateAccessToken(String accessToken) {

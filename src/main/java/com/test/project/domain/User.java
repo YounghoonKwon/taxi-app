@@ -2,9 +2,7 @@ package com.test.project.domain;
 
 import lombok.*;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,6 +14,8 @@ public class User extends BaseEntity {
 
     private String email;
     private String password;
+
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     @Builder

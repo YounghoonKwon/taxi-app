@@ -51,14 +51,14 @@ public class DispatchService {
 
     public List<DispatchResponse> findAllDispatches(Integer userId) {
         final Optional<User> optionalUser = userRepository.findById(userId);
-        final User User = optionalUser.orElseThrow(() -> new UnAuthorizedException("배차요청 하려는 유저가 저장소에 존재하지 않습니다"));
+        final User user = optionalUser.orElseThrow(() -> new UnAuthorizedException("배차요청 하려는 유저가 저장소에 존재하지 않습니다"));
 
-        if (User.isDriver()) {
+        if (user.isDriver()) {
             final List<Dispatch> dispatchesList = dispatchRepository.findAll();
             return DispatchResponse.from(dispatchesList);
         }
 
-        if (User.isPassenger()) {
+        if (user.isPassenger()) {
             final List<Dispatch> dispatchesList = dispatchRepository.findAllByPassengerId(userId);
             return DispatchResponse.from(dispatchesList);
         }
