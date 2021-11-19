@@ -1,0 +1,42 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:author: YounghoonKwon
+:email: younghoonkwon91@gmail.com
+
+== User
+=== 사용자 로그인
+==== 성공
+===== Request
+include::{snippets}/user-signin/http-request.adoc[]
+
+===== Response
+include::{snippets}/user-signin/http-response.adoc[]
+
+==== 실패
+===== Request
+include::{snippets}/user-signin-fail/http-request.adoc[]
+
+===== Response
+include::{snippets}/user-signin-fail/http-response.adoc[]
+
+
+=== 사용자 가입
+==== 성공
+===== Request
+include::{snippets}/user-signup/http-request.adoc[]
+
+===== Response
+include::{snippets}/user-signup/http-response.adoc[]
+
+==== 실패
+===== Request
+include::{snippets}/user-signup-fail/http-request.adoc[]
+
+===== Response
+include::{snippets}/user-signup-fail/http-response.adoc[]
