@@ -40,3 +40,25 @@ include::{snippets}/user-signup-fail/http-request.adoc[]
 
 ===== Response
 include::{snippets}/user-signup-fail/http-response.adoc[]
+
+== Dispatch
+=== 배차 조회
+===== Request
+include::{snippets}/dispatch-find/http-request.adoc[]
+
+===== Response
+include::{snippets}/dispatch-find/http-response.adoc[]
+
+=== 배차 생성
+===== Request
+include::{snippets}/dispatch-create/http-request.adoc[]
+
+===== Response
+include::{snippets}/dispatch-create/http-response.adoc[]
+
+=== 배차 수락
+===== Request
+include::{snippets}/dispatch-update/http-request.adoc[]
+
+===== Response
+include::{snippets}/dispatch-update/http-response.adoc[]
