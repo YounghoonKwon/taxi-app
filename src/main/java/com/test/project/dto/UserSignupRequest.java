@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -21,6 +20,12 @@ public class UserSignupRequest {
     @Size(max = 15, message = "15글자 이하")
     private String password;
     private UserType userType;
+
+    public UserSignupRequest(String email, String password, UserType userType) {
+        this.email = email;
+        this.password = password;
+        this.userType = userType;
+    }
 
     public User toEntity() {
         return User.builder()

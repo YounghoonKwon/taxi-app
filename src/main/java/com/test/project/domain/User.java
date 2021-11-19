@@ -1,6 +1,9 @@
 package com.test.project.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,7 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AttributeOverride(name = "id", column = @Column(name = "user_id"))
-@ToString
 public class User extends BaseEntity {
 
     private String email;
@@ -30,7 +32,7 @@ public class User extends BaseEntity {
         return this.userType == UserType.PASSENGER;
     }
 
-    public boolean isDriver(){
+    public boolean isDriver() {
         return this.userType == UserType.DRIVER;
     }
 }

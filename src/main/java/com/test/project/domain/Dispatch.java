@@ -1,6 +1,9 @@
 package com.test.project.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,7 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AttributeOverride(name = "id", column = @Column(name = "dispatch_id"))
-@ToString
 public class Dispatch extends BaseEntity {
 
     private String address;
@@ -41,7 +43,7 @@ public class Dispatch extends BaseEntity {
         return this.status == Status.STAND_BY;
     }
 
-    public boolean isAcceptedStatus(){
+    public boolean isAcceptedStatus() {
         return this.status == Status.ACCEPTED;
     }
 }

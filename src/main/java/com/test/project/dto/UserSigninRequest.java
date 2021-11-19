@@ -17,4 +17,9 @@ public class UserSigninRequest {
     @Size(min = 1, message = "1글자 이상")
     @Size(max = 15, message = "15글자 이하")
     private String password;
+
+    public UserSigninRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }
